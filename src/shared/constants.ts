@@ -154,6 +154,10 @@ export const OBJECTIVE_TIMERS = {
   campRespawn: 135
 }
 
+/** GitHub repository the app checks for new releases. */
+export const UPDATE_REPO = { owner: 'FinanceSatan', repo: 'LOL-Dashboard' }
+export const RELEASES_URL = `https://github.com/${UPDATE_REPO.owner}/${UPDATE_REPO.repo}/releases/latest`
+
 export const RIOT_DISCLAIMER =
   "Rift Coach isn't endorsed by Riot Games and doesn't reflect the views or opinions of Riot Games or anyone officially involved in producing or managing Riot Games properties. Riot Games, and all associated properties are trademarks or registered trademarks of Riot Games, Inc."
 

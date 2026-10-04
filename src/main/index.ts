@@ -25,6 +25,15 @@ import {
   upsertAccount
 } from './store'
 import { errorCode, getLeaderboard, riot, scoutLiveGame, syncActive } from './sync'
+import {
+  checkForUpdates,
+  downloadUpdate,
+  getUpdateStatus,
+  initUpdater,
+  installUpdate,
+  setAutoDownload,
+  stopUpdater
+} from './updater'
 
 let mainWindow: BrowserWindow | null = null
 let tray: Tray | null = null
@@ -129,6 +138,7 @@ function registerIpc(): void {
       sendOverlaySettings()
     }
     if (patch.minimizeToTray) ensureTray()
+    if (patch.autoUpdate !== undefined) setAutoDownload(next.autoUpdate)
     return next
   })
   ipcMain.handle('setApiKey', async (_e, key: string | null) =>
@@ -240,6 +250,14 @@ function registerIpc(): void {
       return undefined
     })
   )
+  ipcMain.handle('getUpdateStatus', () => getUpdateStatus())
+  ipcMain.handle('checkForUpdates', () => checkForUpdates())
+  ipcMain.handle('downloadUpdate', () => downloadUpdate())
+  ipcMain.handle('installUpdate', () => {
+    quitting = true
+    installUpdate()
+  })
+
   ipcMain.handle('previewOverlay', () => {
     if (!getSettings().overlay.enabled) updateSettings({ overlay: { ...getSettings().overlay, enabled: true } })
     watcher.previewOverlay()
@@ -293,11 +311,13 @@ if (!gotLock) {
     registerIpc()
     createWindow()
     watcher.start()
+    initUpdater(emit, getSettings().autoUpdate)
   })
 
   app.on('before-quit', () => {
     quitting = true
     watcher.stop()
+    stopUpdater()
     destroyOverlay()
   })
 

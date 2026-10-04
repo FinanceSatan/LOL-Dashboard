@@ -38,6 +38,7 @@ export const DEFAULT_SETTINGS: StoredSettings = {
   minimizeToTray: false,
   proxy: '',
   csTargetPerMin: 8,
+  autoUpdate: true,
   onboarded: false
 }
 

@@ -10,7 +10,8 @@ import type {
   Settings,
   StaticData,
   SyncProgress,
-  SyncResult
+  SyncResult,
+  UpdateStatus
 } from '@shared/types'
 
 export interface Toast {
@@ -32,6 +33,8 @@ interface AppState {
   live: LiveClientState | null
   syncing: boolean
   progress: SyncProgress | null
+  update: UpdateStatus | null
+  appVersion: string
   toasts: Toast[]
   init: () => Promise<void>
   reloadData: () => Promise<void>
@@ -61,6 +64,8 @@ export const useApp = create<AppState>((set, get) => ({
   live: null,
   syncing: false,
   progress: null,
+  update: null,
+  appVersion: '',
   toasts: [],
 
   init: async () => {
@@ -77,9 +82,15 @@ export const useApp = create<AppState>((set, get) => ({
       api.on('lcu:champselect', (s) => set({ champSelect: s }))
       api.on('live:update', (s) => set({ live: s.active ? s : null }))
       api.on('settings:changed', async () => set({ settings: await api.getSettings() }))
+      api.on('update:status', (u) => set({ update: u }))
     }
-    const [settings, lcu] = await Promise.all([api.getSettings(), api.getLcuStatus()])
-    set({ settings, lcu })
+    const [settings, lcu, update, info] = await Promise.all([
+      api.getSettings(),
+      api.getLcuStatus(),
+      api.getUpdateStatus(),
+      api.appInfo()
+    ])
+    set({ settings, lcu, update, appVersion: info.version })
     void get().loadStatic()
     await get().reloadData()
     set({ ready: true })

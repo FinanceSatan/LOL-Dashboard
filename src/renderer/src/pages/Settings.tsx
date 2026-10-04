@@ -4,6 +4,7 @@ import { PLATFORMS, RIOT_DISCLAIMER, TIERS } from '@shared/constants'
 import { ROLES, type AppInfo, type OverlaySettings, type Role, type Settings, type Tier } from '@shared/types'
 import { ApiKeyForm, DetectFromClient, RiotIdForm } from '@/components/AccountForm'
 import { ProfileIcon } from '@/components/game'
+import { UpdateCard } from '@/components/Update'
 import { Badge, Button, Card, Field, Input, PageHeader, Segmented, Select, Toggle } from '@/components/ui'
 import { useT } from '@/i18n'
 import { ltr } from '@/lib/format'
@@ -304,6 +305,8 @@ export function SettingsPage() {
               </div>
             </div>
           </Card>
+
+          <UpdateCard />
 
           <Card title={t('settings.data')} icon={<Database size={15} />}>
             <div className="flex flex-wrap gap-2">

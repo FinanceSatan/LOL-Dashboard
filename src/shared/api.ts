@@ -16,7 +16,8 @@ import type {
   Settings,
   StaticData,
   SyncProgress,
-  SyncResult
+  SyncResult,
+  UpdateStatus
 } from './types'
 
 export type Result<T = undefined> = { ok: true; data: T } | { ok: false; error: string }
@@ -53,6 +54,11 @@ export interface RiftApi {
   pushRunePage(page: RunePage, name: string): Promise<Result>
   previewOverlay(): Promise<void>
 
+  getUpdateStatus(): Promise<UpdateStatus>
+  checkForUpdates(): Promise<UpdateStatus>
+  downloadUpdate(): Promise<UpdateStatus>
+  installUpdate(): Promise<void>
+
   exportData(): Promise<Result<string>>
   importData(): Promise<Result>
   clearCache(): Promise<void>
@@ -66,6 +72,7 @@ export interface RiftApi {
   on(channel: 'live:update', cb: (s: LiveClientState) => void): () => void
   on(channel: 'navigate', cb: (path: string) => void): () => void
   on(channel: 'settings:changed', cb: (s: Settings) => void): () => void
+  on(channel: 'update:status', cb: (s: UpdateStatus) => void): () => void
 }
 
 export const EVENT_CHANNELS = [
@@ -75,5 +82,6 @@ export const EVENT_CHANNELS = [
   'lcu:champselect',
   'live:update',
   'navigate',
-  'settings:changed'
+  'settings:changed',
+  'update:status'
 ] as const

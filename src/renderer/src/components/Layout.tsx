@@ -27,9 +27,10 @@ import { PLATFORMS } from '@shared/constants'
 import { useT, type TKey } from '@/i18n'
 import { useApp } from '@/store/app'
 import { useAnalysis } from '@/store/analysis'
-import { timeAgo } from '@/lib/format'
+import { ltr, timeAgo } from '@/lib/format'
 import { ProfileIcon, RankEmblem, TierText } from './game'
 import { Progress, Spinner } from './ui'
+import { UpdateBanner } from './Update'
 
 const NAV: { group: TKey; items: { to: string; label: TKey; icon: ReactNode }[] }[] = [
   {
@@ -257,6 +258,8 @@ export function Layout({ children }: { children: ReactNode }) {
   const progress = useApp((s) => s.progress)
   const champSelect = useApp((s) => s.champSelect)
   const live = useApp((s) => s.live)
+  const update = useApp((s) => s.update)
+  const appVersion = useApp((s) => s.appVersion)
   return (
     <div className="flex h-full flex-col">
       {/* Title bar (window controls overlay sits on the physical right on Windows) */}
@@ -326,13 +329,22 @@ export function Layout({ children }: { children: ReactNode }) {
               {t('nav.settings')}
             </NavLink>
             <div className="mt-2 flex items-center gap-1.5 px-2.5 text-[10px] text-muted">
-              <Gauge size={11} /> v1.0 · {t('layout.notAffiliated')}
+              <Gauge size={11} /> {ltr(`v${appVersion}`)} · {t('layout.notAffiliated')}
+              {update?.state === 'downloaded' && (
+                <NavLink to="/settings" className="ms-auto flex items-center gap-1 font-semibold text-good" title={t('update.restartNow')}>
+                  <span className="h-1.5 w-1.5 rounded-full bg-good pulse-dot" />
+                  {t('update.badge')}
+                </NavLink>
+              )}
             </div>
           </div>
         </aside>
 
         <main className="bg-hero min-w-0 flex-1 overflow-y-auto">
-          <div className="mx-auto max-w-[1500px] px-7 py-6">{children}</div>
+          <div className="mx-auto max-w-[1500px] px-7 py-6">
+            <UpdateBanner />
+            {children}
+          </div>
         </main>
       </div>
       <Toasts />

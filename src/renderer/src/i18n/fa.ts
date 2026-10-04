@@ -818,6 +818,33 @@ const fa: Record<keyof typeof en, string | string[]> = {
   'notify.tilt.streak': '{count} باخت پشت‌سرهم. قبل از بازی بعدی ۱۵ دقیقه استراحت کن.',
   'notify.tilt.limit': 'امروز {count} بازی کردی — به سقف روزانه رسیدی. استراحت هم بخشی از رنک‌آپ است.',
 
+  // updates
+  "update.title": "بروزرسانی",
+  "update.subtitle": "نسخه‌های جدید به‌صورت خودکار از گیت‌هاب دریافت می‌شوند",
+  "update.current": "نسخه نصب‌شده",
+  "update.state.disabled": "نسخه توسعه",
+  "update.state.idle": "در انتظار اولین بررسی",
+  "update.state.checking": "در حال بررسی…",
+  "update.state.none": "به‌روز است",
+  "update.state.available": "نسخه {version} آماده دانلود است",
+  "update.state.downloading": "در حال دانلود {version}…",
+  "update.state.downloaded": "نسخه {version} آماده نصب است",
+  "update.state.error": "بررسی ناموفق بود",
+  "update.readyTitle": "بروزرسانی {version} آماده است",
+  "update.readyBody": "وقتی برنامه را ببندی خودکار نصب می‌شود — یا همین حالا ری‌استارت کن تا نسخه جدید باز شود.",
+  "update.restartNow": "ری‌استارت و بروزرسانی",
+  "update.later": "بعداً",
+  "update.availableTitle": "نسخه جدید منتشر شده: {version}",
+  "update.openDownload": "باز کردن صفحه دانلود",
+  "update.download": "دانلود بروزرسانی",
+  "update.downloadingTitle": "در حال دانلود بروزرسانی {version}…",
+  "update.portableHint": "از نسخه پرتابل استفاده می‌کنی که نمی‌تواند خودش را بروز کند. نسخه جدید را از صفحه انتشار دانلود کن — یا برای بروزرسانی خودکار از فایل نصب (Setup) استفاده کن.",
+  "update.checkNow": "بررسی الان",
+  "update.lastChecked": "آخرین بررسی {ago}",
+  "update.auto": "دانلود و نصب خودکار بروزرسانی‌ها",
+  "update.autoHint": "Rift Coach هنگام اجرا و هر ۴ ساعت گیت‌هاب را بررسی می‌کند. بروزرسانی در پس‌زمینه دانلود و هنگام بستن برنامه نصب می‌شود.",
+  "update.badge": "آپدیت",
+
   // errors
   'error.unknown': 'مشکلی پیش آمد.',
   'error.NO_API_KEY': 'کلید Riot API ذخیره نشده. در تنظیمات اضافه کن یا منبع داده را روی کلاینت لیگ بگذار.',
@@ -831,6 +858,7 @@ const fa: Record<keyof typeof en, string | string[]> = {
   'error.NO_FREE_RUNE_PAGE': 'صفحه رون خالی وجود ندارد. یک صفحه رون را در کلاینت حذف کن و دوباره امتحان کن.',
   'error.HTTP_429': 'محدودیت درخواست Riot. یک دقیقه دیگر امتحان کن.',
   'error.SERVER': 'سرورهای Riot مشکل دارند. بعداً امتحان کن.',
+  "error.UPDATE_NO_RELEASES": "خواندن نسخه‌ها از گیت‌هاب ممکن نشد. ریپازیتوری باید عمومی (Public) باشد (یا هنوز نسخه‌ای منتشر نشده).",
   'error.CANCELLED': 'لغو شد'
 }
 

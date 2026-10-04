@@ -298,7 +298,31 @@ export interface Settings {
   minimizeToTray: boolean
   proxy: string
   csTargetPerMin: number
+  autoUpdate: boolean
   onboarded: boolean
+}
+
+export type UpdateState =
+  | 'disabled' // development build
+  | 'idle'
+  | 'checking'
+  | 'none' // up to date
+  | 'available'
+  | 'downloading'
+  | 'downloaded'
+  | 'error'
+
+export interface UpdateStatus {
+  state: UpdateState
+  currentVersion: string
+  version?: string
+  notes?: string
+  progress?: number // 0..100
+  error?: string
+  checkedAt?: number
+  /** portable exe: updates are downloaded manually from the release page */
+  portable: boolean
+  releaseUrl: string
 }
 
 export interface SyncProgress {

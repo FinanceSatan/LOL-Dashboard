@@ -58,6 +58,8 @@
 2. فایل را اجرا کن — برنامه خودش نصب و باز می‌شود (بدون نیاز به دسترسی ادمین) و آیکونش روی دسکتاپ و منوی استارت ساخته می‌شود.
 3. اگر ویندوز پیام آبی **Windows protected your PC** نشان داد، روی **More info** و بعد **Run anyway** بزن (برنامه امضای دیجیتال پولی ندارد).
 
+**بروزرسانی خودکار:** نسخه نصب‌شده هنگام اجرا و هر ۴ ساعت گیت‌هاب را بررسی می‌کند، نسخه جدید را در پس‌زمینه دانلود می‌کند و هنگام بستن برنامه نصبش می‌کند (یا از بنر «ری‌استارت و بروزرسانی» همان لحظه). این قابلیت در تنظیمات ← بروزرسانی قابل خاموش کردن است. نسخه پرتابل فقط خبر می‌دهد و لینک دانلود را باز می‌کند.
+
 نسخه پرتابل (بدون نصب): [RiftCoach-Portable.exe](https://github.com/FinanceSatan/LOL-Dashboard/releases/latest/download/RiftCoach-Portable.exe) — همه نسخه‌ها در صفحه [Releases](https://github.com/FinanceSatan/LOL-Dashboard/releases).
 
 ## 🔑 راه‌اندازی
@@ -81,6 +83,14 @@
 - برای دیدن اورلی، بازی را در حالت **Borderless** یا **Windowed** اجرا کن.
 - اگر از ایران وصل می‌شوی و دسترسی به سرورهای Riot محدود است، در تنظیمات می‌توانی **پروکسی** (مثلاً `http://127.0.0.1:10809`) وارد کنی؛ در غیر این صورت تنظیمات پروکسی ویندوز استفاده می‌شود.
 - اولین همگام‌سازی با کلید Development به دلیل محدودیت درخواست Riot (۱۰۰ درخواست در ۲ دقیقه) ممکن است چند دقیقه طول بکشد؛ بعد از آن فقط بازی‌های جدید دریافت می‌شوند.
+
+## 🚀 انتشار نسخه جدید (برای همه کاربران)
+
+1. در گیت‌هاب به **Actions → Build Windows app → Run workflow** برو.
+2. `release` را روشن بگذار و در `bump` نوع نسخه را انتخاب کن (`patch` برای رفع اشکال، `minor` برای قابلیت جدید).
+3. ورک‌فلو شماره نسخه را بالا می‌برد، برنامه را روی ویندوز می‌سازد و Release جدید را منتشر می‌کند. برنامه همه کاربران خودش بروز می‌شود.
+
+> ⚠️ بروزرسانی خودکار فایل‌های Release را بدون ورود به گیت‌هاب می‌خواند، پس **ریپازیتوری باید Public باشد**.
 
 ## 🛠 ساخت از سورس
 
@@ -134,6 +144,8 @@ tests/         تست‌های Vitest
 Data comes from the official **Riot API** (development or personal key) or straight from the **League client** running on the same PC (no key needed). Everything is stored locally.
 
 **Download:** [RiftCoach-Setup.exe](https://github.com/FinanceSatan/LOL-Dashboard/releases/latest/download/RiftCoach-Setup.exe) (one-click, per-user installer) or [RiftCoach-Portable.exe](https://github.com/FinanceSatan/LOL-Dashboard/releases/latest/download/RiftCoach-Portable.exe). The app is not code-signed, so SmartScreen may ask you to confirm (More info → Run anyway).
+
+**Auto-update:** the installed app checks GitHub Releases at start-up and every 4 hours, downloads new versions in the background and installs them on quit (or immediately via "Restart & update"). To ship an update run **Actions → Build Windows app → Run workflow** with `release` on and a `bump` level; the workflow bumps the version, builds on Windows and publishes the release (including `latest.yml`). The repository must be public for clients to read the releases.
 
 Build: `npm install` → `npm run dev` / `npm test` / `npm run dist` (Windows). The GitHub Actions workflow builds the installer and a portable exe on every push (see the run's artifacts) and publishes them as a GitHub release for `v*` tags.
 

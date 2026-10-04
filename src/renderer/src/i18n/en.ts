@@ -816,6 +816,33 @@ const en = {
   'notify.tilt.streak': '{count} losses in a row. Take a 15-minute break before the next game.',
   'notify.tilt.limit': "You've played {count} games today — your daily limit. Rest is part of the climb.",
 
+  // updates
+  "update.title": "Updates",
+  "update.subtitle": "New versions are downloaded from GitHub automatically",
+  "update.current": "Installed version",
+  "update.state.disabled": "Development build",
+  "update.state.idle": "Waiting for first check",
+  "update.state.checking": "Checking…",
+  "update.state.none": "Up to date",
+  "update.state.available": "{version} available",
+  "update.state.downloading": "Downloading {version}…",
+  "update.state.downloaded": "{version} ready to install",
+  "update.state.error": "Check failed",
+  "update.readyTitle": "Update {version} is ready",
+  "update.readyBody": "It will be installed automatically when you close Rift Coach — or restart now to use it right away.",
+  "update.restartNow": "Restart & update",
+  "update.later": "Later",
+  "update.availableTitle": "A new version is available: {version}",
+  "update.openDownload": "Open download page",
+  "update.download": "Download update",
+  "update.downloadingTitle": "Downloading update {version}…",
+  "update.portableHint": "You are using the portable exe, which cannot update itself. Download the new version from the release page — or use the installer to get automatic updates.",
+  "update.checkNow": "Check now",
+  "update.lastChecked": "Last checked {ago}",
+  "update.auto": "Download and install updates automatically",
+  "update.autoHint": "Rift Coach checks GitHub at start-up and every 4 hours. Updates are downloaded in the background and installed when you close the app.",
+  "update.badge": "Update",
+
   // errors
   'error.unknown': 'Something went wrong.',
   'error.NO_API_KEY': 'No Riot API key saved. Add one in Settings or switch the data source to the League client.',
@@ -829,6 +856,7 @@ const en = {
   'error.NO_FREE_RUNE_PAGE': 'No free rune page. Delete a rune page in the client and try again.',
   'error.HTTP_429': 'Rate limited by Riot. Try again in a minute.',
   'error.SERVER': 'Riot servers are having trouble. Try again later.',
+  "error.UPDATE_NO_RELEASES": "Could not read the releases on GitHub. The repository has to be public (or no release has been published yet).",
   'error.CANCELLED': 'Cancelled'
 }
 

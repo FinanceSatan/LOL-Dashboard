@@ -34,3 +34,9 @@ nsis:
   artifactName: RiftCoach-Setup.${ext}
 portable:
   artifactName: RiftCoach-Portable.${ext}
+# Auto-update feed: electron-updater reads latest.yml from the newest GitHub release.
+publish:
+  provider: github
+  owner: FinanceSatan
+  repo: LOL-Dashboard
+  releaseType: release
