@@ -1,0 +1,152 @@
+@import 'tailwindcss';
+
+@theme {
+  --font-sans: 'Inter Variable', 'Vazirmatn', system-ui, 'Segoe UI', sans-serif;
+
+  --color-bg: #0b0f17;
+  --color-panel: #121925;
+  --color-panel2: #182131;
+  --color-panel3: #1f2a3d;
+  --color-line: #243149;
+  --color-line2: #2f3f5c;
+  --color-ink: #e9eef6;
+  --color-ink2: #aab5c7;
+  --color-muted: #6f7d93;
+  --color-gold: #c8aa6e;
+  --color-gold2: #f0e6d2;
+  --color-accent: #3987e5;
+  --color-win: #3987e5;
+  --color-loss: #e66767;
+  --color-good: #2fbf71;
+  --color-warn: #fab219;
+  --color-serious: #ec835a;
+  --color-bad: #e66767;
+
+  /* categorical chart slots (validated on the panel surface) */
+  --color-s1: #3987e5;
+  --color-s2: #d95926;
+  --color-s3: #199e70;
+  --color-s4: #c98500;
+  --color-s5: #d55181;
+  --color-s6: #008300;
+  --color-s7: #9085e9;
+  --color-s8: #e66767;
+}
+
+:root {
+  color-scheme: dark;
+}
+
+html,
+body,
+#root {
+  height: 100%;
+}
+
+body {
+  margin: 0;
+  background: var(--color-bg);
+  color: var(--color-ink);
+  font-family: var(--font-sans);
+  font-feature-settings: 'cv11', 'ss01';
+  -webkit-font-smoothing: antialiased;
+  overflow: hidden;
+  user-select: none;
+}
+
+input,
+textarea,
+select {
+  user-select: text;
+}
+
+.drag {
+  -webkit-app-region: drag;
+}
+.no-drag {
+  -webkit-app-region: no-drag;
+}
+
+.tnum {
+  font-variant-numeric: tabular-nums;
+}
+
+/* thin scrollbars */
+::-webkit-scrollbar {
+  width: 10px;
+  height: 10px;
+}
+::-webkit-scrollbar-thumb {
+  background: #263349;
+  border-radius: 8px;
+  border: 2px solid var(--color-bg);
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #33445f;
+}
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.bg-hero {
+  background:
+    radial-gradient(1200px 400px at 85% -20%, rgba(57, 135, 229, 0.18), transparent 60%),
+    radial-gradient(800px 300px at 0% 0%, rgba(200, 170, 110, 0.12), transparent 60%);
+}
+
+.card-glow {
+  box-shadow:
+    0 0 0 1px rgba(255, 255, 255, 0.03) inset,
+    0 10px 30px -15px rgba(0, 0, 0, 0.6);
+}
+
+.fade-in {
+  animation: fadeIn 0.25s ease-out;
+}
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(4px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+.pulse-dot {
+  animation: pulse 1.6s ease-in-out infinite;
+}
+@keyframes pulse {
+  0%,
+  100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.35;
+  }
+}
+
+/* recharts: keep the charts left-to-right inside RTL pages */
+.recharts-wrapper {
+  direction: ltr;
+}
+.recharts-cartesian-grid line {
+  stroke: #1f2a3d;
+}
+.recharts-text {
+  fill: #6f7d93;
+  font-size: 11px;
+}
+
+/* overlay window */
+.overlay-root,
+.overlay-root body {
+  background: transparent !important;
+}
+
+.prose-dd br {
+  display: block;
+  content: '';
+  margin-top: 4px;
+}
