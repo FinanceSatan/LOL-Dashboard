@@ -52,12 +52,13 @@
 
 ## 📥 دانلود و نصب
 
-1. به تب **Actions** همین ریپازیتوری برو، آخرین اجرای موفق «Build Windows app» را باز کن و از بخش **Artifacts** فایل `Rift-Coach-Windows` را دانلود کن.
-   (اگر یک تگ مثل `v1.0.0` بسازی، فایل‌ها در بخش **Releases** هم قرار می‌گیرند.)
-2. داخل آن دو فایل هست:
-   - `Rift-Coach-Setup-x.y.z.exe` — نصب‌کننده
-   - `Rift-Coach-Portable-x.y.z.exe` — نسخه پرتابل بدون نصب
-3. چون برنامه امضای دیجیتال ندارد، ویندوز ممکن است پیام SmartScreen نشان دهد: روی **More info** و بعد **Run anyway** بزن.
+### ⬇️ [دانلود RiftCoach-Setup.exe](https://github.com/FinanceSatan/LOL-Dashboard/releases/latest/download/RiftCoach-Setup.exe)
+
+1. روی لینک بالا بزن تا فایل نصب دانلود شود.
+2. فایل را اجرا کن — برنامه خودش نصب و باز می‌شود (بدون نیاز به دسترسی ادمین) و آیکونش روی دسکتاپ و منوی استارت ساخته می‌شود.
+3. اگر ویندوز پیام آبی **Windows protected your PC** نشان داد، روی **More info** و بعد **Run anyway** بزن (برنامه امضای دیجیتال پولی ندارد).
+
+نسخه پرتابل (بدون نصب): [RiftCoach-Portable.exe](https://github.com/FinanceSatan/LOL-Dashboard/releases/latest/download/RiftCoach-Portable.exe) — همه نسخه‌ها در صفحه [Releases](https://github.com/FinanceSatan/LOL-Dashboard/releases).
 
 ## 🔑 راه‌اندازی
 
@@ -132,7 +133,9 @@ tests/         تست‌های Vitest
 
 Data comes from the official **Riot API** (development or personal key) or straight from the **League client** running on the same PC (no key needed). Everything is stored locally.
 
-Build: `npm install` → `npm run dev` / `npm test` / `npm run dist` (Windows). The GitHub Actions workflow builds the installer and a portable exe on every push (see the run's artifacts) and attaches them to a GitHub release for `v*` tags.
+**Download:** [RiftCoach-Setup.exe](https://github.com/FinanceSatan/LOL-Dashboard/releases/latest/download/RiftCoach-Setup.exe) (one-click, per-user installer) or [RiftCoach-Portable.exe](https://github.com/FinanceSatan/LOL-Dashboard/releases/latest/download/RiftCoach-Portable.exe). The app is not code-signed, so SmartScreen may ask you to confirm (More info → Run anyway).
+
+Build: `npm install` → `npm run dev` / `npm test` / `npm run dist` (Windows). The GitHub Actions workflow builds the installer and a portable exe on every push (see the run's artifacts) and publishes them as a GitHub release for `v*` tags.
 
 | | |
 |---|---|

@@ -21,13 +21,16 @@ win:
     - target: portable
       arch: [x64]
 nsis:
-  oneClick: false
+  # one-click installer: double-click, it installs for the current user (no admin prompt) and starts the app
+  oneClick: true
   perMachine: false
-  allowToChangeInstallationDirectory: true
+  runAfterFinish: true
   createDesktopShortcut: always
   createStartMenuShortcut: true
   shortcutName: Rift Coach
-  artifactName: Rift-Coach-Setup-${version}.${ext}
   uninstallDisplayName: Rift Coach
+  deleteAppDataOnUninstall: false
+  # fixed names give a permanent "latest release" download link
+  artifactName: RiftCoach-Setup.${ext}
 portable:
-  artifactName: Rift-Coach-Portable-${version}.${ext}
+  artifactName: RiftCoach-Portable.${ext}
